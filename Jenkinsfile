@@ -31,8 +31,8 @@ pipeline {
         
          stage('Logging into AWS ECR') {
                      environment {
-                        AWS_ACCESS_KEY_ID = credentials('aws_access_key_id')
-                        AWS_SECRET_ACCESS_KEY = credentials('aws_secret_access_key')
+                        AWS_ACCESS_KEY_ID = credentials('AKIA5CMXAADCOHINSTVJ')
+                        AWS_SECRET_ACCESS_KEY = credentials('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')
                          
                    }
                      steps {
