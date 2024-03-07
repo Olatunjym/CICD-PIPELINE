@@ -1,2 +1,2 @@
 # CICD-PIPELINE
-CICD Pipeline deploymeny to EKS Cluster
+CICD Pipeline deployment to EKS Cluster
