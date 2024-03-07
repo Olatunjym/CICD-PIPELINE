@@ -51,7 +51,7 @@ pipeline {
         }
       }
     }
-        
+    
         stage('Pushing to ECR') {
           steps{  
             script {
@@ -61,24 +61,24 @@ pipeline {
         }
       }
          
-         stage('pull image & Deploying application on eks cluster') {
-                    environment {
-                       AWS_ACCESS_KEY_ID = credentials('aws_access_key_id')
-                       AWS_SECRET_ACCESS_KEY = credentials('aws_secret_access_key')
-                 }
-                    steps {
-                      script{
-                        dir('kubernetes/') {
-                          sh 'aws eks update-kubeconfig --name myapp-eks-cluster --region us-west-1'
-                          sh """aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"""
-                          sh 'helm upgrade --install --set image.repository="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}" --set image.tag="2" myjavaapp myapp/ ' 
+//          stage('pull image & Deploying application on eks cluster') {
+//                     environment {
+//                        AWS_ACCESS_KEY_ID = credentials('aws_access_key_id')
+//                        AWS_SECRET_ACCESS_KEY = credentials('aws_secret_access_key')
+//                  }
+//                     steps {
+//                       script{
+//                         dir('kubernetes/') {
+//                           sh 'aws eks update-kubeconfig --name myapp-eks-cluster --region us-west-1'
+//                           sh """aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"""
+//                           sh 'helm upgrade --install --set image.repository="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}" --set image.tag="2" myjavaapp myapp/ ' 
 
 
 
  
-                        }
-                    }
-               }
-            }
-    }
-}
+//                         }
+//                     }
+//                }
+//             }
+//     }
+// }
