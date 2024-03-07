@@ -7,7 +7,7 @@ pipeline {
         IMAGE_REPO_NAME = "my-image-repo"
         IMAGE_TAG = "${env.BUILD_ID}"
         REPOSITORY_URI = "401277835798.dkr.ecr.us-west-1.amazonaws.com/jenkins-pipeline"
-        EKS_CLUSTER_NAME = "myapp-eks-cluster"
+        EKS_CLUSTER_NAME = "myAppp-eks-cluster"
     }
     stages {
         stage('Git Checkout') {
