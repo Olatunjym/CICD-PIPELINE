@@ -57,3 +57,19 @@ pipeline {
             }
         }
         
+        stage('Deploying application on EKS cluster') {
+            environment {
+                AWS_ACCESS_KEY_ID = credentials('aws_access_key_id')
+                AWS_SECRET_ACCESS_KEY = credentials('aws_secret_access_key')
+            }
+            steps {
+                script {
+                    dir('kubernetes/') {
+                        sh "aws eks update-kubeconfig --name ${EKS_CLUSTER_NAME} --region ${AWS_DEFAULT_REGION}"
+                        sh "helm upgrade --install --set image.repository=${REPOSITORY_URI} --set image.tag=${IMAGE_TAG} myjavaapp myapp/"
+                    }
+                }
+            }
+        }
+    }
+}
