@@ -39,7 +39,7 @@ Usage
     Clone this repository.
     Ensure Jenkins, Docker, and Kubernetes are properly configured.
     Set up the required IAM roles for communication with ECR.
-    Configure Jenkins with the necessary plugins and integrate SonarQube, OWASP Dependency-Check, and Trivy.
+    Configure Jenkins with the necessary plugins and integrate .
     Create a new pipeline item in Jenkins and configure the build triggers.
     Reference the Jenkinsfile path for pipeline execution.
 
