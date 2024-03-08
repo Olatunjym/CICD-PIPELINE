@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/Olatunjym/eks.git'
+                git branch: 'master', url: 'https://github.com/Olatunjym/CICD_PIPELINE.git'
             }
         }
         
