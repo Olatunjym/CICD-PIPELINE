@@ -1,0 +1,37 @@
+# Datadog Documentation
+
+This document provides instructions for deploying Datadog on Kubernetes using the Helm Chart.
+
+## Prerequisites
+- Helm
+
+If this is a fresh install, add the Helm Datadog repo:
+  helm repo add datadog https://helm.datadoghq.com
+  helm repo update
+
+Installation
+Run the following command to install Datadog on your Kubernetes cluster:
+
+  helm install mydatadog --set datadog.site='us3.datadoghq.com' --set datadog.apiKey='<YOUR_API_KEY>' datadog/datadog
+  Replace <YOUR_API_KEY> with your Datadog API Key.
+
+Log Collection Configuration
+To enable log collection with Helm, update your datadog-values.yaml file with the following log collection configuration:
+  datadog:
+    logs:
+      enabled: true
+      containerCollectAll: true
+
+Then upgrade your Helm Chart:
+  helm upgrade -f datadog-values.yaml mydatadog --set datadog.apiKey='<YOUR_API_KEY>' datadog/datadog 
+
+Monitoring on Datadog
+  Go to Integration.
+  Install Kubernetes integration.
+  Click on Kubernetes cluster overview to view your Kubernetes cluster.
+
+Alerting
+  In case of issues, set up different metrics to alert you on your choice of metrics
+
+
+Make sure to replace `<YOUR_API_KEY>` with your actual Datadog API Key.
